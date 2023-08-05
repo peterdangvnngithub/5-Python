@@ -68,8 +68,10 @@ class LinkedList:
             self.head       = self.head.next
             temp_Node.next  = None
         self.length -= 1
-        if(self.length == 0):
+
+        if self.length == 0:
             self.tail = None
+        
         return temp_Node.value
     
     # Return value of the node by index
@@ -78,14 +80,69 @@ class LinkedList:
             return None
         else:
             temp_Node = self.head
-            return temp_Node.value
-            
-    # def insert(self ,index ,value):
+            for _ in range(index):
+                temp_Node = temp_Node.next
+            return temp_Node
+
+    # Set value of the node by index
+    def set_value(self, index, value):
+        temp_Node = self.get(index)
+        if temp_Node:
+            temp_Node.value = value
+            return True
+        return False
+
+    # Insert a node to the linked list by index
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+
+        new_Node        = Node(value)
+        temp_Node       = self.get(index - 1)
+        new_Node.next   = temp_Node.next
+        temp_Node       = new_Node
+        self.length     += 1
+        
+        return True
+
+    # Remove a node in the linked list by index
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return None
+        if index == 0:
+            return self.popFirst()
+        if index == self.length - 1:
+            return self.pop()
+        prev_Node       = self.get(index - 1)
+        temp_Node       = prev_Node.next
+        prev_Node.next  = temp_Node.next
+        temp_Node.next  = None
+        self.length     -= 1
+        return temp_Node
+
+    # Reverse the linked list
+    def reverse(self):
+        temp_Node   = self.head
+        self.head   = self.tail
+        self.tail   = temp_Node
+        after_Node  = temp_Node.next
+        before_Node = None
+        for _ in range(self.length):
+            after_Node      = temp_Node.next
+            temp_Node.next  = before_Node
+            before_Node     = temp_Node
+            temp_Node       = after_Node
 
 my_linked_list = LinkedList(2)
 my_linked_list.append(3)
 my_linked_list.prepend(1)
-print(my_linked_list.popFirst())
-print(my_linked_list.popFirst())
-print(my_linked_list.popFirst())
-print(my_linked_list.popFirst())
+
+my_linked_list.insert(3,4)
+my_linked_list.print_list()
+
+my_linked_list.reverse()
+my_linked_list.print_list()

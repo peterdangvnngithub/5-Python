@@ -7,6 +7,10 @@ def myFunction():
     print("Python is: " + x)
 
 
-myFunction()
+def forLoop():
+    start = 2
+    stop = 5
+    for i in range(start, stop):
+        print("Index: " + str(i))
 
-print("Python is: " + x)
+forLoop()
