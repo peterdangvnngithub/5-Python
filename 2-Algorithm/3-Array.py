@@ -1,5 +1,3 @@
-
-
 def firstPalindrome(self, words):
     def isPanlindrome(word):
         start = 0

@@ -30,14 +30,14 @@ class Binary_Tree:
         # Recursion
         if current_Node is not None:
             self.in_order(current_Node.left)
-            print(current_Node.key, end=" ")
+            # print(current_Node.key, end=" ")
             self.in_order(current_Node.right)
         # 
     
     def pre_order(self, current_Node):
         # Recursion
         if current_Node is not None:
-            print(current_Node.key, end=" ")
+            # print(current_Node.key, end=" ")
             self.pre_order(current_Node.left)
             self.pre_order(current_Node.right)
         return True
@@ -46,12 +46,12 @@ class Binary_Tree:
         if current_Node is not None:
             self.post_order(current_Node.left)
             self.post_order(current_Node.right)
-            print(current_Node.key, end=" ")
+            #print(current_Node.key, end=" ")
         return True
 
     def print_binary_tree(self, node, level=0, prefix="Root: "):
         if node is not None:
-            print(" " * (level * 4) + prefix + str(node.key))
+            # print(" " * (level * 4) + prefix + str(node.key))
             self.print_binary_tree(node.left, level + 1, "L---- ")
             self.print_binary_tree(node.right, level + 1, "R---- ")
 

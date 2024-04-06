@@ -1,27 +1,29 @@
 class Solution(object):
     def MaxProfit(self, prices):
+        # Sliding window Algorithm
         """
-        :type prices: List[int]
-        :rtype: int
-        """
-        buy = 10000
-        sell = 0
-        length = len(prices)
-        print("Length: " + str(length))
-        for i in range(0, length):
-            if prices[i] < buy and i < length - 1:
-                buy = prices[i]
-                print("Buy: " + str(buy))
-                print("Sell: " + str(sell))
-                continue
-            if prices[i] > sell:
-                sell = prices[i]
-                print("Buy: " + str(buy))
-                print("Sell: " + str(sell))
-                continue
+        min_price = float('inf')
+        profit = 0
 
-        return sell - buy if sell - buy > 0 else 0
+        for price in prices:
+            if price < min_price:
+                min_price = price
+            else:
+                profit = max(profit, price - min_price)
+            
+        return profit
+        """
+        # Kadane's Algorithm
+        max_ending_here = 0
+        max_so_far = 0
+        
+        for i in range(1, len(prices)):
+            diff = prices[i] - prices[i-1]
+            max_ending_here = max(diff, max_ending_here + diff)
+            max_so_far = max(max_so_far, max_ending_here)
+        
+        return max_so_far
     
-lInt = [2,1,2,0,1]
+lInt = [7,1,5,3,6,4]
 solution = Solution()
 print(solution.MaxProfit(lInt))
