@@ -2,3 +2,5 @@
 (SHOKI)
 (CAC)
 (LAI)
+(EST)
+(NFTx)
