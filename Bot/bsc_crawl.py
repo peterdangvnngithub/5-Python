@@ -34,7 +34,7 @@ def scrape_page(url):
         if table:
             rows = table.find_all('tr')
             for row in rows:
-                empty_token = row.find('img', src='/assets/bsc/images/svg/empty-token.svg?v=24.3.4.1')
+                empty_token = row.find('img', src='/assets/bsc/images/svg/empty-token.svg?v=24.4.1.0')
                 if empty_token:
                     text_muted = row.find('span', class_='text-muted')
                     if text_muted:
@@ -91,7 +91,7 @@ def write_to_file(coin_name):
 # Main function to scrape multiple pages
 def scrape_pages():
     base_url = 'https://bscscan.com/tokentxns?p='
-    for page_num in range(1, 201):
+    for page_num in range(57, 201):
         print("Scraping page", page_num)
         url = base_url + str(page_num)
         scrape_page(url)
