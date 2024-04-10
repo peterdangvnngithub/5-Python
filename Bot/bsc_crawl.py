@@ -91,7 +91,7 @@ def write_to_file(coin_name):
 # Main function to scrape multiple pages
 def scrape_pages():
     base_url = 'https://bscscan.com/tokentxns?p='
-    for page_num in range(57, 201):
+    for page_num in range(1, 201):
         print("Scraping page", page_num)
         url = base_url + str(page_num)
         scrape_page(url)
