@@ -98,4 +98,4 @@ def scrape_pages():
         time.sleep(1)  # Add a delay to avoid overwhelming the server
 
 # Run the scraper
-scrape_pages()
+scrape_pages() 
